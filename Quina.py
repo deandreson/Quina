@@ -11,17 +11,17 @@ import pandas as pd
 
 # --------------------------------------------------------#
 df = pd.read_excel('data/Quina.xlsx')
-df = df.head(5)
-# Conver# Converter o DataFrame para JSON
-df_json = df.to_json(orient='records', force_ascii=False)
+df_records = df.to_dict(orient='records')
 
+
+print(df.columns)
 
 
 # ----------------------------------------------------------#
 app = Flask(__name__)
 @app.route('/') 
 def index():
-    return render_template('index.html',jogos=df_json)
+    return render_template('index.html',jogos=df_records)
 
 if __name__ == '__main__':
     app.run(debug=True)
