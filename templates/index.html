@@ -1,0 +1,18 @@
+{% extends 'header.html' %} {% block content %}
+<!--Esta é a listagem de Tópicos--->
+<div class="card-body hover-div ">
+    <div class="card-body ">
+        Quina Resultados
+    </div>
+</div>
+<div class="card-body hover-div"></div>
+    <div class="row  row-cols-md-2 g-3">
+        {% for alternativa in jogos %}
+        <div class=" list-group card-body based-on-text">
+            {{ alternativa.Bola1 }}
+        </div>
+        {% endfor %}
+                    
+    </div>
+</div>
+{% endblock %}
