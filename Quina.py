@@ -131,14 +131,7 @@ df['soma_prim_ao_qua']=df['soma_segun_quart']+df['soma_quart_quint']
 app = Flask(__name__)
 @app.route('/') 
 def index():
-    desc_x='soma_total'
-    desc_y='Bola1'
-    desc_x_i='soma_total'
-    desc_y_i='Bola5'
-    legendas=['teste','Bola 1','Bola 5']
-    desc_soma='soma_total'
-    grafico=unir_grafico(df, desc_x, desc_y,desc_x_i, desc_y_i, legendas, desc_soma)
-    return render_template('index.html',jogos=df.to_dict(orient='records'),grafico=grafico)
+    return render_template('index.html',jogos=df.to_dict(orient='records'))
 
 @app.route('/infonografico') 
 def infonografico():

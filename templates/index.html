@@ -1,16 +1,7 @@
 {% extends 'header.html' %} {% block content %}
 <!--Esta é a listagem de Tópicos--->
 <div class="container card-body">
-    <div class="card-body">
-        <div class="chart hover-div" id="grafico">
-            <script>
-                // Pegar o JSON enviado do backend
-                var graphs = {{ grafico | safe }};
-                // Renderizar o gráfico com as modificações
-                Plotly.plot('grafico', graphs, {});
-            </script>
-        </div>
-    </div>
+
 <div class="card-body "></div>
     <div class="row  row-cols-md-3 g-3">
         
