@@ -1,0 +1,56 @@
+{% extends 'header.html' %} {% block content %}
+<!--Esta é a listagem de Tópicos--->
+<div class="container card-body">
+    <div class="card-body ">
+        <div class="card-body ">
+            <div class="chart hover-div " id="tb_normal_b1">
+                <script>
+                    var graphs = {{tb_normal_b1 | safe}};
+                    Plotly.plot('tb_normal_b1',graphs,{});
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="card-body ">
+        <div class="card-body ">
+            <div class="chart hover-div " id="tb_normal_b2">
+                <script>
+                    var graphs = {{tb_normal_b2 | safe}};
+                    Plotly.plot('tb_normal_b2',graphs,{});
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="card-body ">
+        <div class="card-body ">
+            <div class="chart hover-div " id="tb_normal_b3">
+                <script>
+                    var graphs = {{tb_normal_b3 | safe}};
+                    Plotly.plot('tb_normal_b3',graphs,{});
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="card-body ">
+        <div class="card-body ">
+            <div class="chart hover-div " id="tb_normal_b4">
+                <script>
+                    var graphs = {{tb_normal_b4 | safe}};
+                    Plotly.plot('tb_normal_b4',graphs,{});
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="card-body ">
+        <div class="card-body ">
+            <div class="chart hover-div " id="tb_normal_b5">
+                <script>
+                    var graphs = {{tb_normal_b5 | safe}};
+                    Plotly.plot('tb_normal_b5',graphs,{});
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

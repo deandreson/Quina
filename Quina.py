@@ -78,19 +78,23 @@ def criar_grafico(df,desc_x,desc_y,lengedas,desc_soma):
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON
 #__________________________________________________________
-def criar_distribuicao_normal(df):
-        # Usando a coluna 'soma_total_numeros'
+def criar_distribuicao_normal(df,desc_col,desc_grafico):
+    # Usando a coluna 'soma_total_numeros'
     trace = go.Histogram(
-        x=df['Bola4'],
-        nbinsx=10,  # Número de bins (intervalos) no histograma
+        x=df[desc_col],
+        xbins=dict(
+            start=1,   # Começo do intervalo
+            end=80,   # Fim do intervalo
+            size=5    # Tamanho do bin
+        ), # Número de bins (intervalos) no histograma
         opacity=0.75,
-        name='Distribuição de soma_total_numeros'
+        name=desc_grafico
     )
 
     # Configurar o layout do gráfico
     layout = go.Layout(
-        title='Distribuição Normal de soma_total_numeros',
-        xaxis=dict(title='Soma Total de Números'),
+        title='Distribuição '+desc_grafico,
+        xaxis=dict(title='Números da Quina'),
         yaxis=dict(title='Frequência'),
         showlegend=True
     )
@@ -101,7 +105,9 @@ def criar_distribuicao_normal(df):
     # Converter a figura em JSON para enviar ao front-end
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON
+
 #__________________________________________________________
+
 df = pd.read_excel('data/Quina.xlsx')
 df['Data Sorteio'] = pd.to_datetime(df['Data Sorteio'], format='%d/%m/%Y', errors='coerce')
 df['Data Sorteio']=df['Data Sorteio'].dt.strftime('%d/%m/%Y')
@@ -127,11 +133,27 @@ df['soma_ter_qua_qui']=df['soma_terce_quint']+df['Bola4']
 df['soma_prim_ao_qua']=df['soma_segun_quart']+df['soma_quart_quint']
 #__________________________________________________________
 
-
 app = Flask(__name__)
 @app.route('/') 
 def index():
     return render_template('index.html',jogos=df.to_dict(orient='records'))
+#__________________________________________________________
+
+@app.route('/insigths') 
+def insigths():
+    tb_normal_b1 =criar_distribuicao_normal(df,'Bola1','Histograma da Bola 1')
+    tb_normal_b2 =criar_distribuicao_normal(df,'Bola2','Histograma da Bola 2')
+    tb_normal_b3 =criar_distribuicao_normal(df,'Bola3','Histograma da Bola 3')
+    tb_normal_b4 =criar_distribuicao_normal(df,'Bola4','Histograma da Bola 4')
+    tb_normal_b5 =criar_distribuicao_normal(df,'Bola5','Histograma da Bola 5')
+
+    return render_template('insigths.html',
+                           tb_normal_b1=tb_normal_b1,                           
+                           tb_normal_b2=tb_normal_b2,
+                           tb_normal_b3=tb_normal_b3,
+                           tb_normal_b4=tb_normal_b4,
+                           tb_normal_b5=tb_normal_b5)
+#__________________________________________________________
 
 @app.route('/infonografico') 
 def infonografico():
