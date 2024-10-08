@@ -2,7 +2,6 @@
 #### Execução ###
 #   python3 -m venv venv
 #	source venv/bin/activate
-#	cd Aplicativos/Inquiri
 #   export FLASK_ENV=development 
 #   export FLASK_APP=Quina
 #__________________________________________________________
