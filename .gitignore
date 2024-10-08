@@ -1,0 +1,13 @@
+# Ignorar diretórios do ambiente virtual
+venv/
+# Ignorar arquivos de configuração do sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos de cache
+__pycache__/
+*.pyc
+

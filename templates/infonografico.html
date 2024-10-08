@@ -1,0 +1,54 @@
+{% extends 'header.html' %} {% block content %}
+<!--Esta é a listagem de Tópicos--->
+<div class="container card-body">
+    <div class="card-body ">
+        <div class="chart hover-div " id="grafico_i">
+            <script>
+                var graphs = {{grafico_i | safe}};
+                Plotly.plot('grafico_i',graphs,{});
+            </script>
+        </div>
+    </div>
+    <div class="card-body  box-shadow">
+        <div class="chart hover-div " id="grafico_ii">
+            <script>
+                var graphs = {{grafico_ii | safe}};
+                Plotly.plot('grafico_ii',graphs,{});
+            </script>
+        </div>
+    </div>
+    <div class="card-body  ">
+        <div class="chart hover-div " id="grafico_iii">
+            <script>
+                var graphs = {{grafico_iii | safe}};
+                Plotly.plot('grafico_iii',graphs,{});
+            </script>
+        </div>
+    </div>
+    <div class="card-body  ">
+        <div class="chart hover-div " id="grafico_iv">
+            <script>
+                var graphs = {{grafico_iv | safe}};
+                Plotly.plot('grafico_iv',graphs,{});
+            </script>
+        </div>
+    </div>
+    <div class="card-body  ">
+        <div class="chart hover-div " id="grafico_v">
+            <script>
+                var graphs = {{grafico_v | safe}};
+                Plotly.plot('grafico_v',graphs,{});
+            </script>
+        </div>
+    </div>
+    <div class="card-body  ">
+        <div class="chart hover-div " id="grafico_vi">
+            <script>
+                var graphs = {{grafico_vi | safe}};
+                Plotly.plot('grafico_vi',graphs,{});
+            </script>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

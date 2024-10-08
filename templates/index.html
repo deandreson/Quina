@@ -1,32 +1,39 @@
 {% extends 'header.html' %} {% block content %}
 <!--Esta é a listagem de Tópicos--->
-<div class="card-body hover-div ">
-    <div class="card-body ">
-        Quina Resultados
+<div class="container card-body">
+    <div class="card-body">
+        <div class="chart hover-div" id="grafico">
+            <script>
+                // Pegar o JSON enviado do backend
+                var graphs = {{ grafico | safe }};
+                // Renderizar o gráfico com as modificações
+                Plotly.plot('grafico', graphs, {});
+            </script>
+        </div>
     </div>
-</div>
-<div class="card-body hover-div"></div>
+<div class="card-body "></div>
     <div class="row  row-cols-md-3 g-3">
         
         {% for jogo in jogos %}
-        <div class=" list-group card-body based-on-text">
-            
-            <div class="card-body rounded-circle">
-                <p>Número do Concurso {{ jogo['Concurso'] }}</p>
-                
-                <button type="button" class="btn btn-outline-info">{{ jogo['Bola1'] }}</button>
-                <button type="button" class="btn btn-outline-info">{{ jogo['Bola2'] }}</button>
-                <button type="button" class="btn btn-outline-info">{{ jogo['Bola3'] }}</button>
-                <button type="button" class="btn btn-outline-info">{{ jogo['Bola4'] }}</button>
-                <button type="button" class="btn btn-outline-info">{{ jogo['Bola5'] }}</button>
-            
-                
-            </div></div>
+            <div class=" list-group card-body based-on-text">
+                <div class="hover-div">
+                    <div class="card-body " id="{{ jogo['Concurso'] }}">
+                        <p><span class="badge badge-primary bg-info">Concurso {{ jogo['Concurso'] }}</span></p>
+                        <p>Data {{ jogo['Data Sorteio'] }}</p>
+                        <button type="button" class="btn btn-outline-info hover-div rounded-circle">{{ jogo['Bola1'] }}</button>
+                        <button type="button" class="btn btn-outline-info hover-div rounded-circle">{{ jogo['Bola2'] }}</button>
+                        <button type="button" class="btn btn-outline-info hover-div rounded-circle">{{ jogo['Bola3'] }}</button>
+                        <button type="button" class="btn btn-outline-info hover-div rounded-circle">{{ jogo['Bola4'] }}</button>
+                        <button type="button" class="btn btn-outline-info hover-div rounded-circle">{{ jogo['Bola5'] }}</button>
+                        <p><span class="badge badge-primary bg-info">soma {{ jogo['soma_total'] }}</span></p>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
         
                     
     </div>
 </div>
-
+</div>
 
 {% endblock %}
