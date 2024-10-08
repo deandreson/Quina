@@ -78,7 +78,7 @@ def criar_grafico(df,desc_x,desc_y,lengedas,desc_soma):
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON
 #__________________________________________________________
-def criar_distribuicao_normal(df,desc_col,desc_grafico):
+def criar_histrograma(df,desc_col,desc_grafico):
     # Usando a coluna 'soma_total_numeros'
     trace = go.Histogram(
         x=df[desc_col],
@@ -141,11 +141,11 @@ def index():
 
 @app.route('/insigths') 
 def insigths():
-    tb_normal_b1 =criar_distribuicao_normal(df,'Bola1','Histograma da Bola 1')
-    tb_normal_b2 =criar_distribuicao_normal(df,'Bola2','Histograma da Bola 2')
-    tb_normal_b3 =criar_distribuicao_normal(df,'Bola3','Histograma da Bola 3')
-    tb_normal_b4 =criar_distribuicao_normal(df,'Bola4','Histograma da Bola 4')
-    tb_normal_b5 =criar_distribuicao_normal(df,'Bola5','Histograma da Bola 5')
+    tb_normal_b1 =criar_histrograma(df,'Bola1','Histograma da Bola 1')
+    tb_normal_b2 =criar_histrograma(df,'Bola2','Histograma da Bola 2')
+    tb_normal_b3 =criar_histrograma(df,'Bola3','Histograma da Bola 3')
+    tb_normal_b4 =criar_histrograma(df,'Bola4','Histograma da Bola 4')
+    tb_normal_b5 =criar_histrograma(df,'Bola5','Histograma da Bola 5')
 
     return render_template('insigths.html',
                            tb_normal_b1=tb_normal_b1,                           
